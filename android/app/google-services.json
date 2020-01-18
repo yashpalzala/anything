@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "490576039471",
+    "firebase_url": "https://busman-ce106.firebaseio.com",
+    "project_id": "busman-ce106",
+    "storage_bucket": "busman-ce106.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490576039471:android:7133521da82c821f8440da",
+        "android_client_info": {
+          "package_name": "com.hodor.clevercheckin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490576039471-k2m281a9c2eaug20k205jc46jdlaqgtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi1AAnPQPIcc3ByUAqIN2QErHCU18i6io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490576039471-k2m281a9c2eaug20k205jc46jdlaqgtm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490576039471-89tppsq9kp1hq32jrkv8r0plqmhh2brq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.busman3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
