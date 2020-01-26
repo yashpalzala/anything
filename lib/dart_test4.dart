@@ -1,3 +1,5 @@
+import 'package:clevercheckin/utils/colors.dart';
+import 'package:clevercheckin/utils/styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +73,7 @@ addblocked(date)async{
 
  Widget checker(all, check, list) {
   return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('properties').where('blocked' , arrayContainsAny: check).snapshots(), // only required snapshots are called
+      stream: Firestore.instance.collection('properties').where('blocked' , arrayContainsAny:check /* ['1-1-2020','2-1-2020','5-1-2020'] */).snapshots(), // only required snapshots are called
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError)
           return new Text('Error: ${snapshot.error}');
@@ -110,15 +112,7 @@ addblocked(date)async{
               return  ListBuilder(all[index]); 
             }),
           );
-
-
-
-           
-          
-            
-           
-            
-        }
+}
       },
     );
 } 
@@ -140,7 +134,53 @@ addblocked(date)async{
           case ConnectionState.waiting: return new Text('Loading...');
           default:
           print(snapshot.data['name']);
-            return new ListTile(
+            return Stack(
+              children: <Widget>[
+                Padding(
+              padding: const EdgeInsets.all(14),
+              child: InkWell( onTap:(){print(item);} ,
+                              child: Container(
+                  
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50.0),
+                    
+                  ),
+                  
+                  child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(8.0),
+    
+    child: Image.network(
+        snapshot.data['picture'],
+        height: 200.0,
+        width: 350.0,
+        fit: BoxFit.fill,
+    ),
+),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Container( decoration: BoxDecoration(
+                color: Colors.cyan[300],
+                borderRadius: BorderRadius.circular(18)
+
+                
+              ),
+              
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(snapshot.data['name'] , style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, 
+                  fontStyle: FontStyle.italic, color: Colors.white),),
+                ),
+              ),
+            )
+              ],
+            );
+            
+             /* ListTile(
+              leading: CircleAvatar(backgroundImage: NetworkImage(snapshot.data['picture'])),
               title: Text(snapshot.data['name'] ),
               subtitle: Text(snapshot.data['description']),
               
@@ -148,7 +188,7 @@ addblocked(date)async{
                 print(item);
               },
               
-            );
+            ); */ 
         }
       },
     );
