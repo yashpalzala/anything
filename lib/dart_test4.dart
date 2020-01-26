@@ -1,5 +1,3 @@
-import 'package:clevercheckin/utils/colors.dart';
-import 'package:clevercheckin/utils/styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +13,7 @@ class _DateTest4State extends State<DateTest4> {
   var all = [];
   
   var list =[];
+  
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ addblocked(date)async{
               print(check);
           print(check.length.toString()+ 'check');
           print(snapshot.data.documents.length.toString() + '----snapshot - docs'); // this prints no. of snapshots called
-          print(snapshot.data.documents[0].data);
+          /* print(snapshot.data.documents[0].data); */
           
           for (var docshot in snapshot.data.documents) {
             for (var item in check) {
@@ -139,6 +138,7 @@ addblocked(date)async{
                 Padding(
               padding: const EdgeInsets.all(14),
               child: InkWell( onTap:(){print(item);} ,
+              
                               child: Container(
                   
                   decoration: BoxDecoration(
@@ -149,12 +149,19 @@ addblocked(date)async{
                   child: new ClipRRect(
     borderRadius: new BorderRadius.circular(8.0),
     
-    child: Image.network(
+      child:  snapshot.data['picture'] != null? Image.network(
         snapshot.data['picture'],
         height: 200.0,
         width: 350.0,
         fit: BoxFit.fill,
-    ),
+    ): SizedBox(
+      height: 200.0,
+      width: 350.0,
+      
+    )
+    
+    
+    
 ),
                 ),
               ),
